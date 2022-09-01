@@ -12,9 +12,11 @@ data class Ingredient(
     val description:String?,
     val amount: BigDecimal?,
 
-    @ManyToMany
-    val recipe: Recipe
+    @ManyToOne
+    val recipe: Recipe,
 
+    @OneToOne(fetch = FetchType.EAGER)//Unidirectional to UnitMeasure //loaded every time
+    var unitOfMeasure: UnitMeasure?
 
 ) {
 }
